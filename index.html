@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday!</title>
+  <style>
+    /* Basic Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Gallery Styles */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      max-width: 250px;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Life Stats */
+    .stats {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 15px;
+      background: #ff7675;
+      color: white;
+    }
+    .stats a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    /* Quiz Styles */
+    .quiz {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 15px;
+      background: #fdcb6e;
+      color: white;
+    }
+    .quiz .options {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    .quiz button {
+      background: #6c5ce7;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .quiz button:hover {
+      background: #4834d4;
+    }
+
+    /* Follow-up Question: Stylish Text Box (hidden initially) */
+    #followUpQuestion {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.3s ease, max-height 0.3s ease;
+    }
+    #followUpQuestion.visible {
+      opacity: 1;
+      max-height: 100px; /* Adjust as needed */
+      margin-top: 15px;
+    }
+    .text-box {
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid #6c5ce7;
+      font-size: 16px;
+      width: 80%;
+      max-width: 300px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    /* Fullscreen Image Viewer */
+    .fullscreen {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .fullscreen img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+
+    /* Spotify Embed (Background Music) */
+    .spotify {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="mainContainer">
+    <h1>🎉 Happy Birthday, Praveshika! 🎂</h1>
+    <p>Dear ......,</p>
+    <p>
+      Wishing you the most wonderful birthday ever! You light up the world with
+      your presence. Hope this day is as special as you are! 💖
+    </p>
+
+    <!-- Photo Gallery -->
+    <h2>Moon🌙🌙🌙</h2>
+    <div class="gallery">
+      <img src="1738423277447.jpg" alt="Memory 1" onclick="showFullscreen(this.src)" />
+      <img src="1738423277473.jpg" alt="Memory 2" onclick="showFullscreen(this.src)" />
+      <img src="1738423277457.jpg" alt="Memory 3" onclick="showFullscreen(this.src)" />
+      <img src="1738423277480.jpg" alt="Memory 4" onclick="showFullscreen(this.src)" />
+      <img src="1738423277465.jpg" alt="Memory 5" onclick="showFullscreen(this.src)" />
+      <img src="1738423277488.jpg" alt="Memory 6" onclick="showFullscreen(this.src)" />
+      <img src="1738423277497.jpg" alt="Memory 7" onclick="showFullscreen(this.src)" />
+      <img src="1738423277506.jpg" alt="Memory 8" onclick="showFullscreen(this.src)" />
+    </div>
+
+    <!-- Life Stats -->
+    <h2>📊 Your Life Stats</h2>
+    <div class="stats">
+      <p>
+        Check out your amazing life stats here:
+        <a href="https://neal.fun/life-stats/" target="_blank">Life Stats</a>
+      </p>
+      <p>Days lived: [Enter manually]</p>
+      <p>Heartbeats: [Enter manually]</p>
+      <p>Moon: [The moon has orbited you 213 times in your lifetime.]</p>
+    </div>
+
+    <!-- Special Message Section (Optional) -->
+    <h2>💌 Special Message</h2>
+    <p>[Wish you very very very very very happy birthday sweet girl ! you are the best i have ever met. Happy 16th , stay happy and ...... stay happy . kabhi badlna mat already tu best hai. mujhe kabhi bhul mat jana just because mai side guy hu  :) . Enjoy! ]</p>
+
+    <!-- hahahaha -->
+    <h2>🎈 Important question</h2>
+    <div class="quiz" id="quizContainer">
+      <p>Accept karlo naa?</p>
+      <div class="options">
+        <button onclick="answerYes()">Yes</button>
+        <button onclick="answerNo()">No</button>
+      </div>
+      <div id="followUpQuestion">
+        <p>magar kyuu?</p>
+        <input type="text" class="text-box" placeholder="Type your answer..." />
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen Image Viewer -->
+  <div class="fullscreen" id="fullscreenViewer" onclick="closeFullscreen()">
+    <img id="fullscreenImg" src="" alt="Fullscreen Image" />
+  </div>
+
+  <!-- Background Music (Spotify Embed) -->
+  <h2>🎶🎶🎶🎶🎶🎶 </h2>
+  <div class="spotify">
+    <iframe src="https://open.spotify.com/embed/track/0uROb6x5IunKokDggpmwKz" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+  </div>
+
+  <script>
+    // Fullscreen image functions
+    function showFullscreen(src) {
+      document.getElementById('fullscreenImg').src = src;
+      document.getElementById('fullscreenViewer').style.display = 'flex';
+    }
+    function closeFullscreen() {
+      document.getElementById('fullscreenViewer').style.display = 'none';
+    }
+
+    // Store the original content for resetting the quiz
+    const originalContent = document.getElementById('mainContainer').innerHTML;
+
+    // Quiz functions
+    function answerYes() {
+      document.getElementById('mainContainer').innerHTML =
+        "<h1>🎉 Pleaseeee! 🎊</h1><br><button onclick='resetPage()'>Go Back</button>";
+    }
+
+    function answerNo() {
+      // Only reveal the follow-up question when "No" is clicked
+      document.getElementById('followUpQuestion').classList.add('visible');
+    }
+
+    function resetPage() {
+      document.getElementById('mainContainer').innerHTML = originalContent;
+      // Reattach the event for the follow-up question (if needed)
+      document.getElementById('followUpQuestion').classList.remove('visible');
+    }
+  </script>
+</body>
+</html>
